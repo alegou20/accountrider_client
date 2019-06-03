@@ -14,7 +14,6 @@ Vue.component('paypal-checkout', PayPal)
 Vue.config.productionTip = false;
 Vue.use(FlagIcon);
 
-
 ApiService.init();
 
 new Vue({

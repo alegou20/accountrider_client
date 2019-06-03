@@ -10,12 +10,10 @@
                 </paypal-checkout>
             </v-container>
         </v-content>
-
     </div>
 </template>
 
 <script>
-
     export default {
         data() {
             return {

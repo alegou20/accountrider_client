@@ -4,27 +4,7 @@
             <v-container fluid grid-list-md>
                 <h1 class="headline">Filter bills</h1>
                 <v-layout class="mb-3" align-center justify-center wrap row>
-                    <v-flex xs12 sm6 md3>
-                        <v-select
-                                :items="carTrackers"
-                                clearable
-                                v-model="filters.carTracker"
-                                item-text="hardware"
-                                item-value="id"
-                                label="Car tracker"
-                        ></v-select>
-                    </v-flex>
-                    <v-flex xs12 sm6 md3 v-if="!bs">
-                        <v-select
-                                clearable
-                                :items="ownerCredentials"
-                                v-model="filters.ownerCredentials"
-                                item-text="name"
-                                item-value="id"
-                                label="Owner credentials"
-                        ></v-select>
-                    </v-flex>
-                    <v-flex xs12 sm6 md3>
+                    <v-flex xs12 sm6>
                         <v-select
                                 clearable
                                 :items="paymentStatusses"
@@ -32,7 +12,7 @@
                                 label="Payment status"
                         ></v-select>
                     </v-flex>
-                    <v-flex xs12 sm6 md3>
+                    <v-flex xs12 sm6 >
                         <v-select clearable :items="months" v-model="filters.month" label="Select month"></v-select>
                     </v-flex>
                 </v-layout>
@@ -45,7 +25,7 @@
                             <td>{{ props.item.id }}</td>
                             <td>{{ props.item.ownerCredentials.name }}</td>
                             <td>&euro; {{ props.item.totalAmount }}</td>
-                            <td>{{ props.item.createDateFormatted | date }}</td>
+                            <td>{{ props.item.createDateFormatted }}</td>
                             <td>{{ props.item.monthName }}</td>
                             <td>{{ props.item.paymentStatus }}</td>
                         </tr>
@@ -61,10 +41,12 @@
 </template>
 
 <script>
+    import Bill from '@/components/Bill'
     export default {
-        props: ["bs"],
+        components: {Bill},
         data() {
             return {
+
                 headers: [
                     { text: "ID #", value: "id" },
                     { text: "Billed to", value: "ownerCredentials" },
@@ -83,7 +65,6 @@
         },
         computed: {
             billsFiltered() {
-                if (this.bs) return this.filterBills(this.bs);
                 return this.filterBills(this.$store.getters.bills);
             },
             months() {
@@ -122,10 +103,7 @@
         },
         created() {
             // get from store or props
-            if (!this.bs) this.$store.dispatch("getBills");
-            this.$store.dispatch("getCarTrackers");
-            this.$store.dispatch("getRateCategories");
-            this.$store.dispatch("getOwnerCredentials");
+            this.$store.dispatch("getBills")
         }
     };
 </script>

@@ -9,7 +9,7 @@
 
             <v-flex xs12 sm class="mt-5">
                 <div class="text-xs-center">
-                    <div class="font-weight-medium mt-5 display-3">Personal data</div>
+                    <div class="font-weight-medium mt-5 display-3">{{$t('Personal_Data')}}</div>
 
                 </div>
             </v-flex>

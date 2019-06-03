@@ -86,7 +86,7 @@ icon
       },
         items () {
           return [
-              { icon: 'lock_open', title: this.$t('bills'), link: '/bills' },
+              { icon: 'lock_open', title: this.$t('bills'), link: '/' },
               { icon: 'directions_car', title: this.$t('vehicle'), link: '/vehicle' },
               { icon: 'face', title: this.$t('personal_data'), link: '/personalData' },
           ]

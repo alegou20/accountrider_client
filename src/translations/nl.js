@@ -17,5 +17,6 @@ export default{
     BSNCredentials: 'Vul hier je BSN in',
     OLDpassword: 'type hier uw oude wachtwoord',
     NEWpassword: 'type hier uw nieuwe wachtwoord',
-    update: 'bewerken'
+    update: 'bewerken',
+    Personal_Data: 'persoonsgegevens'
 }

@@ -12,11 +12,6 @@ import Paypal from "../views/Paypal";
 
 export default[
     {
-        path: '/',
-        name: 'home',
-        component: Home,
-    },
-    {
         path: '/login',
         name: 'login',
         component: Login,
@@ -47,7 +42,7 @@ export default[
         component: PersonalData,
     },
     {
-        path: '/bills',
+        path: '/',
         name: 'bills',
         component: Bills,
     },

@@ -17,5 +17,6 @@ export default{
     BSNCredentials: 'Fill in your bsn',
     OLDpassword: 'type in your old password',
     NEWpassword: 'type in your new password',
-    Update: 'update'
+    Update: 'update',
+    Personal_Data: 'Personal date'
 }
