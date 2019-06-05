@@ -77,16 +77,12 @@ icon
       };
     },
     computed : {
-      user(){
-          return {
-              email:  "alegou20@hotmail.com"
-          };
-
-        // return this.$store.getters.user
-      },
+        user(){
+            return this.$store.getters.user
+        },
         items () {
           return [
-              { icon: 'lock_open', title: this.$t('bills'), link: '/' },
+              { icon: 'lock_open', title: this.$t('bills'), link: '/bills' },
               { icon: 'directions_car', title: this.$t('vehicle'), link: '/vehicle' },
               { icon: 'face', title: this.$t('personal_data'), link: '/personalData' },
           ]

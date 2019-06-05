@@ -1,10 +1,9 @@
-import ApiService from "@/common/api.service";
 import jwt_decode from 'jwt-decode'
-import AxiosInstance from '@/router/axios-config'
+import axios from 'axios'
 
 export default {
     state: {
-        user: {},
+        user: null,
         locale: 'nl',
         isAuthenticated: !!localStorage.token,
     },
@@ -34,22 +33,14 @@ export default {
 
         LOGOUT(state) {
             state.isAuthenticated = false;
-            state.user = {};
-            state.errors = {};
+            state.user = null;
             delete localStorage.token
         }
     },
     actions: {
-        setAuthorisationHeader({ }, token) {
-            if (token)
-                AxiosInstance.defaults.headers.common['Authorization'] = `Bearer ${token}`
-            else
-                delete AxiosInstance.defaults.headers.common['Authorization']
-        },
-
         LOGIN(context, credentials) {
-            return ApiService.post("auth/login", {
-                email: credentials.email,
+            return axios.post("http://i367868core.venus.fhict.nl/users/authenticate", {
+                username: credentials.username,
                 password: credentials.password
             })
                 .catch((e) => {
@@ -58,24 +49,27 @@ export default {
         },
 
         Authorise(context, payload) {
-            return ApiService.get('ownercredentials', payload);
+            return axios.get('http://192.168.25.101:8080/BillAdministration/ownercredentials/' + payload.BSN +"/"+ payload.postalcode, {
+                headers: {
+                    'x-api': ''
+                }
+            })
         },
 
         SetUserOutOfToken(context, payload) {
-            localStorage.token = payload.data
-
-            const token = jwt_decode(payload.data)
+            localStorage.token = payload.data.token
             const loggedUser = {
-                id: token.id,
-                email: token.email
+                bsn: payload.data.bsn,
+                username: payload.data.username
             }
-
+            console.log(loggedUser)
             context.commit("SET_AUTH", loggedUser);
         },
 
         REGISTER(context, credentials) {
-            return ApiService.post("auth/register", {
-                email: credentials.email,
+            return axios.post("http://i367868core.venus.fhict.nl/users/register", {
+                BSN: credentials.BSN,
+                username: credentials.username,
                 password: credentials.password
             })
                 .catch((e) => {
@@ -91,11 +85,11 @@ export default {
                 context.commit("LOGOUT", null);
                 return false
             }
-            ApiService.setHeader();
+
             const token = jwt_decode(localStorage.token)
             const loggedUser = {
                 id: token.id,
-                email: token.email
+                username: token.username
             }
 
             context.commit("SET_AUTH", loggedUser);

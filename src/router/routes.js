@@ -2,7 +2,6 @@
 import Login from '@/views/Login.vue'
 import Profile from '@/views/Profile.vue'
 import Register from '@/views/Register.vue'
-import Home from '@/views/Home.vue'
 import About from '@/views/About.vue'
 import OwnerCredentials from "../views/OwnerCredentials";
 import Bills from "../views/Bills";
@@ -12,7 +11,7 @@ import Paypal from "../views/Paypal";
 
 export default[
     {
-        path: '/login',
+        path: '/',
         name: 'login',
         component: Login,
     },
@@ -42,7 +41,7 @@ export default[
         component: PersonalData,
     },
     {
-        path: '/',
+        path: '/bills',
         name: 'bills',
         component: Bills,
     },

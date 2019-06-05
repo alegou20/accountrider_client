@@ -12,7 +12,8 @@
 
                             <p class="primary--text text-xs-center headline">{{$t('registerHoofdtekst')}}</p>
                             <p class="primary--text text-xs-center headline font-weight-bold">Accountrider ID</p>
-                            <v-text-field width="10px" name="email" :label="$t('email')" id="email" v-model="email" type="email" required></v-text-field>
+                            <v-text-field disabled width="10px" name="BSN" :label="$t('BSN')" id="BSN" v-model="BSN" type="BSN" required></v-text-field>
+                            <v-text-field width="10px" name="email" :label="$t('username')" id="email" v-model="username" type="email" required></v-text-field>
                             <v-text-field name="password" :label="$t('password')" id="password" v-model="password" type="password" required></v-text-field>
 
                             <div class="text-xs-center">
@@ -30,23 +31,24 @@
     export default {
         data() {
             return {
-                email: '',
+                username: '',
+                BSN: '',
                 password: null,
                 auth: ''
             };
         },
+        mounted() {
+            console.log(this.$route.params.BSN)
+            this.BSN  = this.$route.params.BSN;
+        },
         methods: {
             onSignUp() {
                 this.$store
-                    .dispatch("REGISTER", {email: this.email, password: this.password})
-                    .then(res => {
-                        this.auth = res.data;
-                        if(this.auth){
-                            this.$router.push({
-                                name: 'login'
-                            });
-                        }
-                    });
+                    .dispatch("REGISTER", {BSN: this.BSN, username: this.username, password: this.password})
+
+                this.$router.push({
+                    name: 'login'
+                });
             },
         },
     };

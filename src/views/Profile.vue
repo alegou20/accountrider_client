@@ -5,7 +5,7 @@
                 <v-text-field
                         single-line
                         outline
-                        v-model="user.email"
+                        v-model="user.username"
                         disabled
                 ></v-text-field>
                 <v-text-field

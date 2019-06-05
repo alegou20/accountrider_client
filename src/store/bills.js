@@ -42,7 +42,8 @@ export default {
         payBill(context, bill) {
             var b = JSON.parse(JSON.stringify({...bill}));
             b.paymentStatus = "PAYED";
-            axios.put('http://192.168.25.101:8080/BillAdministration/bill',b, {
+            axios.put('http://192.168.25.101:8080/BillAdministration/bill',b,
+                {
                 headers: {
                     'x-api': ''
                 }

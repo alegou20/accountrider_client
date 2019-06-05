@@ -12,7 +12,7 @@
 
                             <p class="indigo--text text-xs-center headline">{{$t('loginHoofdtekst')}}</p>
                             <p class="indigo--text text-xs-center headline font-weight-bold">Accountrider ID</p>
-                            <v-text-field width="10px" name="email" :label="$t('email')" id="email" v-model="email" type="email" required></v-text-field>
+                            <v-text-field width="10px" name="username" :label="$t('username')" id="username" v-model="username" type="username" required></v-text-field>
                             <v-text-field name="password" :label="$t('password')" id="password" v-model="password" type="password" required></v-text-field>
 
                             <div class="text-xs-center">
@@ -31,7 +31,7 @@
     export default {
         data() {
             return {
-                email: null,
+                username: null,
                 password: null,
                 auth: '',
             };
@@ -39,13 +39,17 @@
         methods: {
             onSignin() {
                 this.$store
-                    .dispatch("LOGIN", {email: this.email, password: this.password})
+                    .dispatch("LOGIN", {username: this.username, password: this.password})
                     .then(res => {
+                        console.log(res.data)
                         if(res.data != null){
                             this.$store.dispatch("SetUserOutOfToken", {data: res.data})
                             this.$router.push({
-                                name: 'home'
+                                name: 'bills'
                             });
+                        }
+                        else{
+                            alert('wrong credentials')
                         }
                     });
             },

@@ -10,11 +10,9 @@ export default {
         }
     },
     mutations: {
-
         setVehicle(state){
             state.vehicles = state;
         }
-
     },
     actions: {
         getVehicle(context, payload) {

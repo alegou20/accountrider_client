@@ -10,7 +10,7 @@ export default{
     AccountriderID: 'Accountrider ID',
     Signin: 'signin',
     Signup: 'signup',
-    email: 'email',
+    username: 'username',
     password: 'password',
     BSN: 'BSN',
     Authorize: 'authorize',
@@ -18,5 +18,11 @@ export default{
     OLDpassword: 'type in your old password',
     NEWpassword: 'type in your new password',
     Update: 'update',
-    Personal_Data: 'Personal date'
+    Personal_Data: 'Personal date',
+
+    Name: 'name',
+    City: 'city',
+    Postalcode: 'postal code',
+    Streetname: 'street name',
+    Housenumber: 'house number'
 }

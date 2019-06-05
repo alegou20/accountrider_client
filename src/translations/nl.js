@@ -10,7 +10,7 @@ export default{
     AccountriderID: 'Accountrider ID',
     Signin: 'Inloggen',
     Signup: 'Registreren',
-    email: 'email',
+    username: 'username',
     password: 'wachtwoord',
     BSN: 'BSN',
     Authorize: 'valideren',
@@ -18,5 +18,13 @@ export default{
     OLDpassword: 'type hier uw oude wachtwoord',
     NEWpassword: 'type hier uw nieuwe wachtwoord',
     update: 'bewerken',
-    Personal_Data: 'persoonsgegevens'
+    Personal_Data: 'persoonsgegevens',
+
+    Name: 'naam',
+    City: 'stad',
+    Postalcode: 'postcode',
+    Streetname: 'straatnaam',
+    Housenumber: 'huisnummer'
+
+
 }
