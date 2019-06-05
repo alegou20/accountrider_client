@@ -8,22 +8,16 @@
                         v-model="user.username"
                         disabled
                 ></v-text-field>
-                <v-text-field
-                        single-line
-                        outline
-                        :label="$t('OLDpassword')"
-                        v-model="oldPassword"
-                ></v-text-field>
 
                 <v-text-field
                         single-line
                         outline
                         :label="$t('NEWpassword')"
                         v-model="password"
-
+                        type="password"
                 ></v-text-field>
 
-                <v-btn block round color="primary"  @click="update">{{$t('update')}}</v-btn>
+                <v-btn block round color="primary" @click="updatePassword">{{$t('update')}}</v-btn>
             </v-flex>
         </v-layout>
     </v-container>
@@ -45,8 +39,10 @@
             }
         },
         methods: {
-            update() {
-                alert('update')
+            updatePassword() {
+                this.$store
+                    .dispatch("updateProfile", {password: this.password})
+
             }
         },
     };

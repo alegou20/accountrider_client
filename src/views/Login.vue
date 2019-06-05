@@ -41,9 +41,12 @@
                 this.$store
                     .dispatch("LOGIN", {username: this.username, password: this.password})
                     .then(res => {
-                        console.log(res.data)
                         if(res.data != null){
                             this.$store.dispatch("SetUserOutOfToken", {data: res.data})
+                            this.$store.dispatch("GetOwnercredentials")
+                                .then(res => {
+                                    localStorage.ownercredentials = JSON.stringify(res.data)
+                                })
                             this.$router.push({
                                 name: 'bills'
                             });

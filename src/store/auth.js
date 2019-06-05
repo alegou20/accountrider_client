@@ -48,6 +48,14 @@ export default {
                 })
         },
 
+        GetOwnercredentials(context){
+            return axios.get('http://192.168.25.101:8080/BillAdministration/ownercredentials/' + context.getters.user.bsn, {
+                headers: {
+                    'x-api': ''
+                }
+            })
+        },
+
         Authorise(context, payload) {
             return axios.get('http://192.168.25.101:8080/BillAdministration/ownercredentials/' + payload.BSN +"/"+ payload.postalcode, {
                 headers: {
@@ -60,7 +68,8 @@ export default {
             localStorage.token = payload.data.token
             const loggedUser = {
                 bsn: payload.data.bsn,
-                username: payload.data.username
+                username: payload.data.username,
+                id: payload.data.id
             }
             console.log(loggedUser)
             context.commit("SET_AUTH", loggedUser);
@@ -99,6 +108,7 @@ export default {
         logout() {
             this.commit("LOGOUT", null)
             delete localStorage.token
+            delete localStorage.ownercredentials
         },
     },
 }
