@@ -6,7 +6,7 @@ import About from '@/views/About.vue'
 import OwnerCredentials from "../views/OwnerCredentials";
 import Bills from "../views/Bills";
 import PersonalData from "../views/PersonalData";
-import Vehicle from "../components/Vehicle";
+import Vehicles from "../views/Vehicles";
 import Paypal from "../views/Paypal";
 
 export default[
@@ -33,7 +33,7 @@ export default[
     {
         path: '/vehicle',
         name: 'vehicle',
-        component: Vehicle,
+        component: Vehicles,
     },
     {
         path: '/personaldata',

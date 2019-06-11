@@ -42,7 +42,11 @@
             updatePassword() {
                 this.$store
                     .dispatch("updateProfile", {password: this.password})
-
+                    .then(res => {
+                        alert('CORRECT: password is changed')
+                    }).catch(err => {
+                    alert('Password has not been changed')
+                });
             }
         },
     };

@@ -27,8 +27,7 @@ export default {
             }, {headers: {
                     'Authorization': `Bearer ${localStorage.token}`
                 }}
-
-        )
+             )
         }
     }
 }

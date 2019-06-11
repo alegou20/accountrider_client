@@ -77,6 +77,11 @@
             update() {
                 this.$store
                     .dispatch("UpdateUser", this.ownercredentials)
+                    .then(res => {
+                        alert('CORRECT: personal info is updated')
+                    }).catch(err => {
+                    alert('FALSE: personal info has not been updated')
+                });
             },
         },
     };

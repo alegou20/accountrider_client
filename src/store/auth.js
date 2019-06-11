@@ -43,8 +43,8 @@ export default {
                 username: credentials.username,
                 password: credentials.password
             })
-                .catch((e) => {
-                    console.error(e)
+                .catch(() => {
+                    alert('wrong credentials')
                 })
         },
 

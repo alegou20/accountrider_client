@@ -15,7 +15,12 @@ export default {
         }
     },
     actions: {
-        getVehicle(context, payload) {
-            return axios.get('http://192.168.25.101:8080/BillAdministration/vehicle/' + payload)}
+        getVehiclesByOwnerCredentialsId(context, ownerCredentialsId) {
+            return axios.get('http://192.168.25.101:8080/BillAdministration/vehicle/ownercredentials/' + ownerCredentialsId, {
+                headers: {
+                    'x-api': 1
+                }
+            })
+        }
     }
 }
